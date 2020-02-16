@@ -1,4 +1,3 @@
-#-*- coding:utf-8 -*-
 import cv2
 import glob
 import os
@@ -7,9 +6,9 @@ import random
 import shutil
 
 
-view_dir = "/root/下载/1"
-images_dir = "/root/下载/1"
-#new_img=
+view_dir = "/home/rah/annotation/sanlun"
+images_dir = "/home/rah/datas/JPEGImagess/sanlun"
+new_img=
 random_select = list()
 anns_images = 0
 no_anns_images = 0
@@ -53,15 +52,15 @@ for xml in xml_list:
             y2 = int(bndbox.find('ymax').text)
             c1, c2 = (x1, y1), (x2, y2)
             cv2.rectangle(image, c1, c2, (0, 255, 0), thickness=3)
-            cv2.putText(image, name, (c1[0], c1[1] - 2), cv2.FONT_HERSHEY_PLAIN, 1, [0, 255, 0], thickness=1)
+            cv2.putText(image, name, (c1[0], c1[1] - 2), cv2.FONT_HERSHEY_PLAIN, 3, [0, 255, 0], thickness=3)
             have_vehicle = True
     if have_vehicle:
-        #cv2.namedWindow(image_path.split("/")[-1],0)
-        #cv2.resizeWindow(image_path.split("/")[-1],w,h)
-        #cv2.imshow(image_path.split("/")[-1],image)
-        #cv2.waitKey(0)
-        #cv2.destroyAllWindows()
-        cv2.imwrite(os.path.join("/root/下载/1/new",image_path.split("/")[-1]),image)
+        # cv2.namedWindow(image_path.split("/")[-1],0)
+        # cv2.resizeWindow(image_path.split("/")[-1],w,h)
+        # cv2.imshow(image_path.split("/")[-1],image)
+        # cv2.waitKey(0)
+        # cv2.destroyAllWindows()
+        cv2.imwrite(os.path.join("/home/rah/annotation/ann_images/2",image_path.split("/")[-1]),image)
         anns_images += 1
     else:
         shutil.copy(image_path, newimgDir+img_name)
